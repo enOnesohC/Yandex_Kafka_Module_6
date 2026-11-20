@@ -5,5 +5,3 @@ httpx
 cachetools
 attrs
 jsonschema
-json
-pathlib
