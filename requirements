@@ -1,0 +1,9 @@
+confluent_kafka
+certifi
+authlib
+httpx
+cachetools
+attrs
+jsonschema
+json
+pathlib

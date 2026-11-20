@@ -1,0 +1,10 @@
+curl.exe -X GET http://localhost:8081/subjects/user-value/versions
+
+curl.exe http://localhost:8081/subjects
+
+docker exec -it module_6-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh `
+--bootstrap-server kafka-0:9092 `
+--describe `
+--topic user
+
+docker exec -it postgres psql -U postgres-user -d users

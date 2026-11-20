@@ -1,0 +1,51 @@
+resource "yandex_mdb_kafka_cluster" "kafka593" {
+  config {
+    version = "4.2"
+    zones = [
+      "ru-central1-a"
+    ]
+    brokers_count    = 3
+    assign_public_ip = false
+    access {
+      data_transfer = false
+    }
+    kafka_ui {
+      enabled = false
+    }
+    kafka {
+      resources {
+        disk_size          = 10
+        disk_type_id       = "network-ssd"
+        resource_preset_id = "s3-c2-m8"
+      }
+      kafka_config {
+        default_replication_factor = "3"
+        log_segment_bytes          = "1048576"
+        log_retention_ms           = "10000000"
+      }
+    }
+    kraft {
+      resources {
+        disk_size          = 10
+        disk_type_id       = "network-ssd"
+        resource_preset_id = "s3-c2-m8"
+      }
+    }
+  }
+  deletion_protection = true
+  description         = "yandex_kafka_course_module_6"
+  environment         = "PRODUCTION"
+  folder_id           = "b1gb5fien0e9kcg4j6s5"
+  maintenance_window {
+    type = "WEEKLY"
+    day  = "MON"
+    hour = 20
+  }
+  name       = "kafka593"
+  network_id = "enpvdpqatrh861htcuc6"
+  subnet_ids = [
+    "e9bi0tc3lokch17ultfu",
+    "fl8bno2uqbngamtn48bc",
+    "ajck4o67fmjse043f1b9"
+  ]
+}
